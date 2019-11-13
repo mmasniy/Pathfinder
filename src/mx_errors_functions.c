@@ -54,11 +54,35 @@ bool mx_check_first_line(int number) {
 // дописать ф-ю)
 bool mx_check_all_line(char **lines) {
 	int i = 0;
+	int j = 0;
+	int weight = 0;
 
-	for(; *lines[i] = ; i++) {
-		
+	for (; lines[i]; i++) {
+		for (; lines[i][j] != '-' && lines[i]; j++) {
+			if (!(mx_isalpha(lines[i][j]))) {
+				mx_printeer_all_line(lines[i]);
+				return 0;
+			}
+		}
+		j++;
+
+		for (; lines[i][j] != ',' && lines[i]; j++) {
+			if (!(mx_isalpha(lines[i][j]))) {
+				mx_printeer_all_line(lines[i]);
+				return 0;
+			}
+		}
+		j++;
+// чекни здесь, если есть ошибки
+		if ((weight = mx_atoi(lines[i][j]))) {
+			mx_printeer_all_line(lines[i]);
+				return 0;
+		}
 	}
+	return 1;
+}	
 
+bool mx_printeer_all_line(char *line) {
 	mx_printeer("error: line ");
 	mx_printeer(lines[i]);
 	mx_printeer("isn't valid");
