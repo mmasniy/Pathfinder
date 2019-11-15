@@ -1,36 +1,48 @@
 NAME = pathfinder
 
-INC = ./inc/pathfinder.h
+LIBAR = ./Libmx/libmx.a
 
-HEADTMP = ./pathfinder.h
+DIROBJ = obj
 
-SRC = ./*.c \
+DIRSRC = src
 
-SRCS = ./src/*.c \
+DIRINC = inc
 
-OBJ = ./*.o \
+LIB = ./Libmx
 
-OBJO = ./obj./*.o \
+SRC = src/main.c \
+		src/mx_printerr.c \
+		src/mx_isalpha.c \
+		src/mx_errors.c \
+		src/mx_errors_functions.c \
+		src/mx_file_to_lines.c
+
+OUT = main.o \
+		mx_printerr.o \
+		mx_isalpha.o \
+		mx_errors.o \
+		mx_errors_functions.o \
+		mx_file_to_lines.o
+
+INC = inc/pathfinder.h
 
 CFLAGS = -std=c11 -Wall -Wextra -Wpedantic -Werror -g -fsanitize=address
 
-all: install uninstall
+all: install clean
 
 install:
-	@cd Libmx && make -f Makefile install
-	@cp $(INC) $(SRCS) .
-	@clang $(CFLAGS) -c $(SRC)
-	@mkdir obj
-	@mv $(OBJ) ./obj
-	@clang $(CFLAGS) $(OBJO) libmx/libmx.a -o $(NAME)
+	@cd $(LIB) && make install
+	@mkdir $(DIROBJ)
+	@clang $(CFLAGS) $(SRC) -c $(SRC) -I $(INC)
+	@mv $(OUT) $(DIROBJ)
+	@clang $(CFLAGS) $(SRC) $(LIBAR) -o $(NAME) -I $(INC)
 
-uninstall:
-	@cd libmx && make -f Makefile uninstall
-	@rm -rf $(OBJO) $(SRC) $(HEADTMP)
-	@rm -rf ./obj
-
-clean : unistall
-	@cd libmx && make -f Makefile clean
+uninstall: clean
 	@rm -rf $(NAME)
+	@cd $(LIB) && make uninstall
 
-reinstall : clean all
+clean: 
+	@rm -rf $(DIROBJ)
+	@cd $(LIB) && make clean
+
+reinstall: uninstall all

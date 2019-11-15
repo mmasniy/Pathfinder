@@ -4,7 +4,7 @@ bool mx_check_number_args(int argc) {
 	if (argc == 2)
 		return 1;
 
-	mx_printeer(USAGE);
+	mx_printerr(USAGE);
 
 	return 0;
 }
@@ -15,10 +15,10 @@ bool mx_check_file(char *filename) {
 	if (fd > 0)
 		return 1;
 
-	mx_printeer("error: file ");
-	mx_printeer(filename);
-	mx_printeer(" doesn't exist");
-	mx_printeer("\n");
+	mx_printerr("error: file ");
+	mx_printerr(filename);
+	mx_printerr(" doesn't exist");
+	mx_printerr("\n");
 
 	close(fd);
 
@@ -33,60 +33,63 @@ bool mx_empty_file(char *filename) {
 	if (sz > 0)
 		return 1;
 
-	mx_printeer("error: file ");
-	mx_printeer(filename);
-	mx_printeer(" is empty");
-	mx_printeer("\n");
+	mx_printerr("error: file ");
+	mx_printerr(filename);
+	mx_printerr(" is empty");
+	mx_printerr("\n");
 
 	close(fd);
 
 	return 0;
 }
 
-bool mx_check_first_line(int number) {
-	if (mx_isdigit(number))
-		return 1;
-
-	mx_printeer(LINE_1);
-
-	return 0;
-}
-// дописать ф-ю)
-bool mx_check_all_line(char **lines) {
-	int i = 0;
-	int j = 0;
-	int weight = 0;
-
-	for (; lines[i]; i++) {
-		for (; lines[i][j] != '-' && lines[i]; j++) {
-			if (!(mx_isalpha(lines[i][j]))) {
-				mx_printeer_all_line(lines[i]);
-				return 0;
-			}
+bool mx_check_first_line(char *first) {
+	while (*first) {
+		if (!((*first >= '0' && *first <= '9'))) {
+			mx_printerr(LINE_1);
+			return 0;
 		}
-		j++;
 
-		for (; lines[i][j] != ',' && lines[i]; j++) {
-			if (!(mx_isalpha(lines[i][j]))) {
-				mx_printeer_all_line(lines[i]);
-				return 0;
-			}
-		}
-		j++;
-// чекни здесь, если есть ошибки
-		if ((weight = mx_atoi(lines[i][j]))) {
-			mx_printeer_all_line(lines[i]);
-				return 0;
-		}
+		first++;
 	}
 	return 1;
-}	
+}
 
-bool mx_printeer_all_line(char *line) {
-	mx_printeer("error: line ");
-	mx_printeer(lines[i]);
-	mx_printeer("isn't valid");
-	mx_printeer("\n");
+// bool mx_check_all_line(char **lines) {
+// 	int i = 0;
+// 	int j = 0;
+// 	int weight = 0;
+
+// 	for (; lines[i]; i++) {
+// 		for (; lines[i][j] != '-' && lines[i]; j++) {
+// 			if (!(mx_isalpha(lines[i][j]))) {
+// 				mx_printerr_all_line(i);
+// 				return 0;
+// 			}
+// 		}
+// 		j++;
+
+// 		for (; lines[i][j] != ',' && lines[i]; j++) {
+// 			if (!(mx_isalpha(lines[i][j]))) {
+// 				mx_printerr_all_line(i);
+// 				return 0;
+// 			}
+// 		}
+// 		j++;
+
+// 		if ((weight = mx_atoi(&lines[i][j]))) {
+// 			mx_printerr_all_line(i);
+// 				return 0;
+// 		}
+// 	}
+// 	return 1;
+// }	
+
+bool mx_printerr_all_line(int number) {
+	mx_printerr("error: line ");
+	mx_printerr(mx_itoa(number));
+	mx_printerr("isn't valid");
+	mx_printerr("\n");
 	return 0;
 }
 
@@ -94,7 +97,7 @@ bool mx_chaeck_valid_isl(int number, int islands) {
 	if (number == islands)
 		return 1;
 
-	mx_printeer(INVALID_NUMBER);
+	mx_printerr(INVALID_NUMBER);
 	return 0;
 }
 
