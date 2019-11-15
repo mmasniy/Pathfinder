@@ -44,7 +44,7 @@ bool mx_empty_file(char *filename) {
 }
 
 bool mx_check_first_line(char *first) {
-	while (*first) {
+	while (*first != '\0') {
 		if (!((*first >= '0' && *first <= '9'))) {
 			mx_printerr(LINE_1);
 			return 0;
@@ -55,42 +55,47 @@ bool mx_check_first_line(char *first) {
 	return 1;
 }
 
-// bool mx_check_all_line(char **lines) {
-// 	int i = 0;
-// 	int j = 0;
-// 	int weight = 0;
+bool mx_check_all_line(char **lines) {
+	int i = 1;
+	int j = 0;
 
-// 	for (; lines[i]; i++) {
-// 		for (; lines[i][j] != '-' && lines[i]; j++) {
-// 			if (!(mx_isalpha(lines[i][j]))) {
-// 				mx_printerr_all_line(i);
-// 				return 0;
-// 			}
-// 		}
-// 		j++;
+	for (; lines[i]; i++) {
+		printf("%s\n", lines[i]);
+		j++;
+		for (; lines[i][j] != '-' && lines[i]; j++) {
+			printf("%c\n", lines[i][j]);
+			if (!(mx_isalpha(lines[i][j]))) {
+				mx_printerr_all_line(i);
+				return 0;
+			}
+		}
+		j++;
 
-// 		for (; lines[i][j] != ',' && lines[i]; j++) {
-// 			if (!(mx_isalpha(lines[i][j]))) {
-// 				mx_printerr_all_line(i);
-// 				return 0;
-// 			}
-// 		}
-// 		j++;
+		for (; lines[i][j] != ',' && lines[i]; j++) {
+			printf("%c\n", lines[i][j]);
+			if (!(mx_isalpha(lines[i][j]))) {
+				mx_printerr_all_line(i);
+				return 0;
+			}
+		}
+		j++;
 
-// 		if ((weight = mx_atoi(&lines[i][j]))) {
-// 			mx_printerr_all_line(i);
-// 				return 0;
-// 		}
-// 	}
-// 	return 1;
-// }	
+		for (;lines[i][j];j++) {
+			printf("%c\n", lines[i][j]);
+			if (!((lines[i][j] >= '0' && lines[i][j] <= '9'))) {
+				mx_printerr_all_line(i);
+				return 0;
+			}
+		}
+	}
+	return 1;
+}	
 
-bool mx_printerr_all_line(int number) {
+void mx_printerr_all_line(int number) {
 	mx_printerr("error: line ");
 	mx_printerr(mx_itoa(number));
-	mx_printerr("isn't valid");
+	mx_printerr(" isn't valid");
 	mx_printerr("\n");
-	return 0;
 }
 
 bool mx_chaeck_valid_isl(int number, int islands) {

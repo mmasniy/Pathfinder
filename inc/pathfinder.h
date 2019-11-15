@@ -13,7 +13,7 @@ bool mx_check_file(char *filename);
 bool mx_check_number_args(int argc);
 bool mx_check_first_line(char *first);
 bool mx_check_all_line(char **lines);
-bool mx_printerr_all_line(int number);
+void mx_printerr_all_line(int number);
 bool mx_check_errors(int argv, char *filename);
 bool mx_chaeck_valid_isl(int number, int islands);
 

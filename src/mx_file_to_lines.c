@@ -10,11 +10,14 @@ char **mx_file_to_lines(char **lines_isl, const char *filename, int *islands) {
 
 	if (!(mx_check_first_line(lines_isl[0])))
 		return NULL;
-	
+
 	*islands = mx_atoi(lines_isl[0]);
 
 	mx_strdel(&all_lines);
-	return lines_isl;
 
+	if (!(mx_check_all_line(lines_isl)))
+		return NULL;
+
+	return lines_isl;
 }
 

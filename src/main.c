@@ -7,8 +7,9 @@ int main(int argc, char **argv) {
 	if (!(mx_check_errors(argc, argv[1])))
 		return 0;
 
-	lines_isl = mx_file_to_lines(lines_isl, argv[1], &islands);
+	if (!(lines_isl = mx_file_to_lines(lines_isl, argv[1], &islands)))
+		return 0;
 
 
-
+	printf("validation - YES");
 }
