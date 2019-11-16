@@ -56,34 +56,28 @@ bool mx_check_first_line(char *first) {
 }
 
 bool mx_check_all_line(char **lines) {
-	int i = 1;
-	int j = 0;
 
-	for (; lines[i]; i++) {
-		printf("%s\n", lines[i]);
-		j++;
+	for (int i = 1, j = 0; lines[i]; i++) {
+		j = 0;
 		for (; lines[i][j] != '-' && lines[i]; j++) {
-			printf("%c\n", lines[i][j]);
 			if (!(mx_isalpha(lines[i][j]))) {
-				mx_printerr_all_line(i);
+				mx_printerr_all_line(i + 1);
 				return 0;
 			}
 		}
 		j++;
 
 		for (; lines[i][j] != ',' && lines[i]; j++) {
-			printf("%c\n", lines[i][j]);
 			if (!(mx_isalpha(lines[i][j]))) {
-				mx_printerr_all_line(i);
+				mx_printerr_all_line(i + 1);
 				return 0;
 			}
 		}
 		j++;
 
 		for (;lines[i][j];j++) {
-			printf("%c\n", lines[i][j]);
-			if (!((lines[i][j] >= '0' && lines[i][j] <= '9'))) {
-				mx_printerr_all_line(i);
+			if (!((lines[i][j] >= '0' && lines[i][j] <= '9'))) { //|| lines[i][j] == '\n')
+				mx_printerr_all_line(i + 1);
 				return 0;
 			}
 		}
