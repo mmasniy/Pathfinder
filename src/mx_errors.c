@@ -12,3 +12,25 @@ bool mx_check_errors(int argc, char *filename) {
 
 	return 1;
 }
+
+bool mx_chaeck_valid_isl(int number, int islands) {
+	if (number == islands)
+		return 1;
+
+	mx_printerr(INVALID_NUMBER);
+	return 0;
+}
+
+
+bool mx_check_first_line(char *first) {
+	while (*first != '\0') {
+		if (!((*first >= '0' && *first <= '9'))) {
+			mx_printerr(LINE_1);
+			return 0;
+		}
+
+		first++;
+	}
+	return 1;
+}
+

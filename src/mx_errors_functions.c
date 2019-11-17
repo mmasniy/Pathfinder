@@ -43,20 +43,7 @@ bool mx_empty_file(char *filename) {
 	return 0;
 }
 
-bool mx_check_first_line(char *first) {
-	while (*first != '\0') {
-		if (!((*first >= '0' && *first <= '9'))) {
-			mx_printerr(LINE_1);
-			return 0;
-		}
-
-		first++;
-	}
-	return 1;
-}
-
 bool mx_check_all_line(char **lines) {
-
 	for (int i = 1, j = 0; lines[i]; i++) {
 		j = 0;
 		for (; lines[i][j] != '-' && lines[i]; j++) {
@@ -91,12 +78,3 @@ void mx_printerr_all_line(int number) {
 	mx_printerr(" isn't valid");
 	mx_printerr("\n");
 }
-
-bool mx_chaeck_valid_isl(int number, int islands) {
-	if (number == islands)
-		return 1;
-
-	mx_printerr(INVALID_NUMBER);
-	return 0;
-}
-
