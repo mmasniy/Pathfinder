@@ -39,7 +39,7 @@ char **mx_strsplit(char const *s, char c) {
 		newstr[i][a] = '\0';
 	}
 
-	newstr[i] = 0;
+	newstr[i] = NULL;
 	
 	return newstr;
 }

@@ -64,17 +64,43 @@ int get_2_len(char **lines_isl) {
 
 char **one_line_to_mass(char *new_all_lines) {
 	char **with_repeat = NULL;
-	//char **no_repeat = NULL;
+	char **no_repeat = NULL;
+	int len = 4;
+	int a = 0;
 
 	with_repeat = mx_strsplit(new_all_lines, '-');
-
+	mx_strdel(&new_all_lines);
+	no_repeat = (char **)malloc(sizeof(*no_repeat) * (len + 1));
 	for (int i = 0; with_repeat[i]; i++) {
-		for (int j = 0; with_repeat[j]; j++) {
-			if ((i != j) && (mx_strcmp(with_repeat[i], with_repeat[j]) == 0))
-				with_repeat[j] = "0";
+		for (int j = 0; with_repeat[j];) {
+			if ((i != j) && (mx_strcmp(with_repeat[i], with_repeat[j]) == 0)) {
+				j++;
+				continue;
+			}
+			else {
+				no_repeat[a] = mx_strdup(with_repeat[j]);
+				a++;
+				i++;
+			}
+
 		}
 	}
-	return with_repeat;
+	
+	// for (int i = 0; with_repeat[i];) {
+	// 	if (mx_strcmp("0", with_repeat[i]) == 0)
+	// 		i++;
+	// 	else {
+	// 		no_repeat[j] = mx_strdup(with_repeat[i]);
+	// 		j++;
+	// 		i++;
+	// 	}
+	// 	mx_strdel(&with_repeat[i]);
+	// }
+	//free(with_repeat);
+	no_repeat[a] = NULL;
+	mx_del_strarr(&with_repeat);
+	printf("qweewrertyuyi");
+	return no_repeat;
 }
 
 
