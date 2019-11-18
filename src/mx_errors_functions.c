@@ -43,27 +43,27 @@ bool mx_empty_file(char *filename) {
 	return 0;
 }
 
-bool mx_check_all_line(char **lines) {
-	for (int i = 1, j = 0; lines[i]; i++) {
+bool mx_check_all_line(char ***lines) {
+	for (int i = 1, j = 0; (*lines)[i]; i++) {
 		j = 0;
-		for (; lines[i][j] != '-' && lines[i]; j++) {
-			if (!(mx_isalpha(lines[i][j]))) {
+		for (; (*lines)[i][j] != '-' && (*lines)[i]; j++) {
+			if (!(mx_isalpha((*lines)[i][j]))) {
 				mx_printerr_all_line(i + 1);
 				return 0;
 			}
 		}
 		j++;
 
-		for (; lines[i][j] != ',' && lines[i]; j++) {
-			if (!(mx_isalpha(lines[i][j]))) {
+		for (; (*lines)[i][j] != ',' && (*lines)[i]; j++) {
+			if (!(mx_isalpha((*lines)[i][j]))) {
 				mx_printerr_all_line(i + 1);
 				return 0;
 			}
 		}
 		j++;
 
-		for (;lines[i][j];j++) {
-			if (!((lines[i][j] >= '0' && lines[i][j] <= '9'))) { //|| lines[i][j] == '\n')
+		for (;(*lines)[i][j];j++) {
+			if (!(((*lines)[i][j] >= '0' && (*lines)[i][j] <= '9'))) { //|| lines[i][j] == '\n')
 				mx_printerr_all_line(i + 1);
 				return 0;
 			}

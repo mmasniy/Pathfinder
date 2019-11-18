@@ -41,10 +41,15 @@ bool mx_chaeck_valid_isl(int number, int islands);
 bool mx_isalpha(char c);
 bool parse(int argc, char **argv);
 
-int get_2_len(char **lines_isl);
+int get_multiarr_len(char **lines_isl);
+int get_multiarr_element(char **lines_isl);
+
+int **mx_create_mass(int islands);
+
+char *mx_zero(char *str);
 
 char **isl_in_lines(char **lines_isl);
 char **one_line_to_mass(char *new_all_lines);
-char **mx_file_to_lines(const char *filename, int *islands);
+char **mx_file_to_lines(const char *filename, int *islands, char ***line);
 
 #endif

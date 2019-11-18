@@ -15,18 +15,22 @@ SRC = src/main.c \
 		src/mx_isalpha.c \
 		src/mx_errors.c \
 		src/mx_errors_functions.c \
-		src/mx_file_to_lines.c
+		src/mx_file_to_lines.c \
+		src/get_multi_len.c \
+		src/mx_create_mass.c
 
 OUT = main.o \
 		mx_printerr.o \
 		mx_isalpha.o \
 		mx_errors.o \
 		mx_errors_functions.o \
-		mx_file_to_lines.o
+		mx_file_to_lines.o \
+		get_multi_len.o \
+		mx_create_mass.o
 
 INC = inc/pathfinder.h
 
-CFLAGS = -std=c11 -Wall -Wextra -Wpedantic -Werror -g -fsanitize=address
+CFLAGS = -std=c11 -Wall -Wextra -Wpedantic -Werror #-g -fsanitize=address
 
 all: install clean
 
