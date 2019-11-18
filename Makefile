@@ -34,12 +34,14 @@ CFLAGS = -std=c11 -Wall -Wextra -Wpedantic -Werror #-g -fsanitize=address
 
 all: install clean
 
-install:
+install: 
 	@cd $(LIB) && make install
 	@mkdir $(DIROBJ)
 	@clang $(CFLAGS) $(SRC) -c $(SRC) -I $(INC)
 	@mv $(OUT) $(DIROBJ)
 	@clang $(CFLAGS) $(SRC) $(LIBAR) -o $(NAME) -I $(INC)
+	@make clean
+
 
 uninstall: clean
 	@rm -rf $(NAME)
