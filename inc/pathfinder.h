@@ -6,7 +6,7 @@
 #define LINE_1 "error: line 1 isn't valid\n"
 #define INVALID_NUMBER "error: invalid number of islands\n"
 
-typedef struct s_form {
+typedef struct		s_form {
 	int				islands;
 	char 			**line;
 	char 			**full_line;
@@ -14,9 +14,15 @@ typedef struct s_form {
 	int 			**path;
 } 					t_form;
 
+typedef struct 		s_list {
+	int				**all_path;
+	struct s_list	*next;
+}					t_list;
+
 //Errors
 void mx_printerr(const char *s);
 void mx_printerr_all_line(int number);
+void mx_check_path(t_list **l_path, t_form *p_find, int top);
 
 bool mx_empty_file(char *filename);
 bool mx_check_file(char *filename);
@@ -35,6 +41,7 @@ int get_multiarr_len(char **lines_isl);
 int get_multiarr_zeroElement(char **lines_isl);
 int get_multiarr_element(char **lines_isl);
 
+int **mx_end_zero_mass(int islands);
 int **mx_create_mass(t_form *p_find);
 int **mx_create_zero_mass(int islands);
 

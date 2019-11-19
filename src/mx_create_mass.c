@@ -15,6 +15,21 @@ int **mx_create_zero_mass(int islands) {
 	return mass;
 }
 
+int **mx_end_zero_mass(int islands) {
+	int **empty_mass = (int **)malloc(sizeof(int *) * 3);
+
+	int INF = 2147483647;
+	for (int i = 0; i < islands; i++) {
+		empty_mass[i] = (int *)malloc(sizeof(int) * islands);
+		for (int j = 0; j < islands; j++)
+			if (i == 3)
+				empty_mass[i][j] = 0;
+			else
+				empty_mass[i][j] = INF;
+	}
+	return empty_mass;
+}
+
 int **mx_create_mass(t_form *p_find) {
 	int **mass = mx_create_zero_mass(p_find->islands);
 	char *two = NULL;
@@ -38,15 +53,16 @@ int **mx_create_mass(t_form *p_find) {
 				break;
 		}
 		mass[i][j] = mx_get_num_from_str(p_find->full_line[line]);
-		//printf("mass[i][j] = %d ", mass[i][j]);
 		mass[j][i] = mass[i][j];
-		//printf("mass[j][i] = %d ", mass[j][i]);
 	}
 	return mass;
 }
 
 int mx_get_num_from_str(char *line) {
 	int position = mx_get_char_index(line, ',') + 1;
-	//printf("possition %d ", position);
 	return mx_atoi(&line[position]);
 }
+
+
+
+
