@@ -9,6 +9,7 @@
 typedef struct s_form {
 	int				islands;
 	char 			**line;
+	char 			**full_line;
 	char 			**roads_name;
 	int 			**path;
 } 					t_form;
@@ -23,18 +24,19 @@ bool mx_check_number_args(int argc);
 bool mx_check_first_line(char *first);
 bool mx_check_all_line(t_form *p_find);
 bool mx_check_errors(int argv, char *filename);
-bool mx_chaeck_valid_isl(int number, int islands);
+bool mx_check_valid_isl(int number, int islands);
 
 //Use
-
-
 bool mx_isalpha(char c);
-bool parse(int argc, char **argv);
+bool init(int argc, char **argv);
 
+int mx_get_num_from_str(char *line);
 int get_multiarr_len(char **lines_isl);
+int get_multiarr_zeroElement(char **lines_isl);
 int get_multiarr_element(char **lines_isl);
 
-int **mx_create_mass(int islands);
+int **mx_create_mass(t_form *p_find);
+int **mx_create_zero_mass(int islands);
 
 char *mx_zero(char *str);
 

@@ -13,7 +13,7 @@ bool mx_check_errors(int argc, char *filename) {
 	return 1;
 }
 
-bool mx_chaeck_valid_isl(int number, int islands) {
+bool mx_check_valid_isl(int number, int islands) {
 	if (number == islands)
 		return 1;
 

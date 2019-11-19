@@ -10,13 +10,22 @@ int get_multiarr_len(char **lines_isl) {
 	return len;
 }
 
-int get_multiarr_element(char **lines_isl) {
+int get_multiarr_zeroElement(char **lines_isl) {
 	int len = 0;//кол елементов
 
 	for (int i = 0; lines_isl[i]; i++) {
-		if ((mx_strcmp(lines_isl[i], "0") == 0))
+		if (!(mx_strcmp(lines_isl[i], "0") == 0))
 			len++;
 	}
+
+	return len;
+}
+
+int get_multiarr_element(char **lines_isl) {
+	int len = 0;//кол елементов
+
+	for (int i = 0; lines_isl[i]; i++)
+			len++;
 
 	return len;
 }

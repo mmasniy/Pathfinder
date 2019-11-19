@@ -3,9 +3,9 @@
 char **mx_file_to_lines(const char *filename, t_form *p_find) {
 	char *all_lines = mx_file_to_str(filename);
 	char **all_isl = NULL;
-	//char **lines_isl = NULL;
 	
 	p_find->line = mx_strsplit(all_lines, '\n');
+	p_find->full_line = mx_strsplit(all_lines, '\n');
 	mx_strdel(&all_lines);
 
 	if (!(mx_check_first_line((p_find->line)[0])))
@@ -65,7 +65,7 @@ char **one_line_to_mass(char *new_all_lines) {
 	}
 	
 	no_repeat = (char **)malloc(sizeof(*no_repeat) * 
-									(get_multiarr_element(with_repeat) + 1));
+								(get_multiarr_zeroElement(with_repeat) + 1));
 	
 	for (int i = 0; with_repeat[i];) {
 		if (mx_strcmp("0", with_repeat[i]) == 0)
