@@ -1,34 +1,37 @@
 #include "../inc/pathfinder.h"
 
-int **mx_create_zero_mass(int islands) {
-	int **mass = (int **)malloc(sizeof(int *) * islands);
-	int INF = 2147483647;
-	for (int i = 0; i < islands; i++) {
-		mass[i] = (int *)malloc(sizeof(int) * islands);
-		for (int j = 0; j < islands; j++)
-			mass[i][j] = INF;
+int **mx_create_zero_mass(int N) {
+	int **mass = (int **)malloc(sizeof(int *) * N);
+	for (int i = 0; i < N; i++) {
+		mass[i] = (int *)malloc(sizeof(int) * N);
+		for (int j = 0; j < N; j++)
+			mass[i][j] = 999999999;
 	}
 
-	for (int i = 0; i < islands; i++)
+	for (int i = 0; i < N; i++)
 		mass[i][i] = 0;
-
 	return mass;
 }
 
-int **mx_end_zero_mass(int islands) {
-	int **empty_mass = (int **)malloc(sizeof(int *) * 3);
-
-	int INF = 2147483647;
-	for (int i = 0; i < islands; i++) {
-		empty_mass[i] = (int *)malloc(sizeof(int) * islands);
-		for (int j = 0; j < islands; j++)
-			if (i == 3)
-				empty_mass[i][j] = 0;
-			else
-				empty_mass[i][j] = INF;
+int **mx_create_int_mass(int N) {
+	int **mass = (int **)malloc(sizeof(int *) * N);
+	for (int i = 0; i < N; i++) {
+		mass[i] = (int *)malloc(sizeof(int) * N);
+		for (int j = 0; j < N; j++)
+			mass[i][j] = j;
 	}
-	return empty_mass;
+	return mass;
 }
+
+// int *mx_mass_min_ver(t_form *p_find, int number) {
+// 	int *min_path = (int *)malloc(sizeof(int) * p_find->islands);
+
+// 	for (int i = 0; i < p_find->islands; i++)
+// 		min_path[i] = number;
+
+// 	return min_path;
+
+// }
 
 int **mx_create_mass(t_form *p_find) {
 	int **mass = mx_create_zero_mass(p_find->islands);
@@ -64,5 +67,15 @@ int mx_get_num_from_str(char *line) {
 }
 
 
-
-
+// int **mx_end_zero_mass(int islands) {
+// 	int **empty_mass = (int **)malloc(sizeof(int *) * 3);
+// 	for (int i = 0; i < 3; i++) {
+// 		empty_mass[i] = (int *)malloc(sizeof(int) * islands);
+// 		for (int j = 0; j < islands; j++)
+// 			// if (i == 3)
+// 				empty_mass[i][j] = 0;
+// 			// else
+// 			// 	empty_mass[i][j] = INF;
+// 	}
+// 	return empty_mass;
+// }
