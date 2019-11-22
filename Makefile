@@ -18,7 +18,8 @@ SRC = src/main.c \
 		src/mx_file_to_lines.c \
 		src/get_multi_len.c \
 		src/mx_create_mass.c \
-		src/mx_init.c
+		src/mx_init.c \
+		src/print_path.c
 
 OUT = main.o \
 		mx_printerr.o \
@@ -28,7 +29,8 @@ OUT = main.o \
 		mx_file_to_lines.o \
 		get_multi_len.o \
 		mx_create_mass.o \
-		mx_init.o
+		mx_init.o \
+		print_path.o
 
 INC = inc/pathfinder.h
 

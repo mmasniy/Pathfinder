@@ -1,24 +1,41 @@
 #include "../inc/pathfinder.h"
 
+/*
+Обработать ошибки
+2
+A-B,5
+B-A,7
+
+1
+А-А,6
+*/
+
+
 void mx_algorithm(t_form *p_find) {
 	int MAX = 999999999;
 	p_find->dist = mx_create_zero_mass(p_find->islands);
+	p_find->next_top = mx_create_zero_mass(p_find->islands);
 
 	for (int i = 0; i < p_find->islands; i++) {
 		for (int j = 0; j < p_find->islands; j++) {
 			p_find->dist[i][j] = p_find->path[i][j];
+			p_find->next_top[i][j] = 0;
 		}
 	}
 
 	for(int k = 0; k < p_find->islands; k++) {
-		for (int j = 0; j < p_find->islands; j++) {
-			for (int i = 0; i < p_find->islands; i++) {
+		for (int i = 0; i < p_find->islands; i++) {
+			for (int j = 0; j < p_find->islands; j++) {
+				//посмотреть как работает с ифом и проверкой на макс, если что - убрать
 				if (p_find->dist[i][k] < MAX && p_find->dist[i][k] + p_find->dist[k][j] < p_find->dist[i][j]) {
 					p_find->dist[i][j] = p_find->dist[i][k] + p_find->dist[k][j];
+					p_find->next_top[i][j] = k;
 				}
 			}
 		}
 	}
+
+	mx_print_path(p_find);
 	for (int i = 0; i < p_find->islands; i++) {
 		for (int j = 0; j < p_find->islands; j++) {
 			printf("%d ", p_find->path[i][j]);
@@ -29,6 +46,13 @@ void mx_algorithm(t_form *p_find) {
 	for (int i = 0; i < p_find->islands; i++) {
 		for (int j = 0; j < p_find->islands; j++) {
 			printf("%d ", p_find->dist[i][j]);
+		}
+		printf("\n");
+	}
+	printf("====================================\n");
+	for (int i = 0; i < p_find->islands; i++) {
+		for (int j = 0; j < p_find->islands; j++) {
+			printf("%d ", p_find->next_top[i][j]);
 		}
 		printf("\n");
 	}
@@ -61,13 +85,24 @@ bool init(int argc, char **argv) {
 	p_find->roads_name = NULL;
 	p_find->path = NULL;
 	p_find->dist = NULL;
+	p_find->next_top = NULL;
 
 	init2(argc, argv, p_find);
 
 	mx_del_strarr(&p_find->roads_name);
 	mx_del_strarr(&p_find->line);
 	mx_del_strarr(&p_find->full_line);
+	
+	/*
+	очистка многомерного массива интов
+	проверить правильность
+	если что - лики могуть быть здесь
+	*/
+	// написать ф-ю для чистки интового массива 
 	free(p_find->path);
+	free(p_find->dist);
+	free(p_find->next_top);
+
 	free(p_find);
 	return 1;
 }

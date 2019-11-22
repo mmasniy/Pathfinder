@@ -13,24 +13,24 @@ int **mx_create_zero_mass(int N) {
 	return mass;
 }
 
-int **mx_create_int_mass(int N) {
-	int **mass = (int **)malloc(sizeof(int *) * N);
-	for (int i = 0; i < N; i++) {
-		mass[i] = (int *)malloc(sizeof(int) * N);
-		for (int j = 0; j < N; j++)
-			mass[i][j] = j;
+int *mx_mass(int size) {
+	int *mass = (int *)malloc(sizeof(int) * size);
+
+	for (int i = 0; i < size; i++) {
+		mass[i] = 0;
 	}
+
 	return mass;
 }
 
-// int *mx_mass_min_ver(t_form *p_find, int number) {
-// 	int *min_path = (int *)malloc(sizeof(int) * p_find->islands);
-
-// 	for (int i = 0; i < p_find->islands; i++)
-// 		min_path[i] = number;
-
-// 	return min_path;
-
+// int **mx_create_int_mass(int N) {
+// 	int **mass = (int **)malloc(sizeof(int *) * N);
+// 	for (int i = 0; i < N; i++) {
+// 		mass[i] = (int *)malloc(sizeof(int) * N);
+// 		for (int j = 0; j < N; j++)
+// 			mass[i][j] = j;
+// 	}
+// 	return mass;
 // }
 
 int **mx_create_mass(t_form *p_find) {
@@ -65,17 +65,3 @@ int mx_get_num_from_str(char *line) {
 	int position = mx_get_char_index(line, ',') + 1;
 	return mx_atoi(&line[position]);
 }
-
-
-// int **mx_end_zero_mass(int islands) {
-// 	int **empty_mass = (int **)malloc(sizeof(int *) * 3);
-// 	for (int i = 0; i < 3; i++) {
-// 		empty_mass[i] = (int *)malloc(sizeof(int) * islands);
-// 		for (int j = 0; j < islands; j++)
-// 			// if (i == 3)
-// 				empty_mass[i][j] = 0;
-// 			// else
-// 			// 	empty_mass[i][j] = INF;
-// 	}
-// 	return empty_mass;
-// }

@@ -1,12 +1,7 @@
-10
-Greenland-Bananal,5
-Fraser-Greenland,22
-Bananal-Fraser,9
-Java-Fraser,6
+5
 A-B,11
 A-C,10
 B-D,5
 C-D,6
 C-E,15
 D-E,4
-E-K,6
