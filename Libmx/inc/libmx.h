@@ -77,6 +77,7 @@ char **mx_strsplit(const char *s, char c);
 
 int mx_sqrt(int x);
 int mx_genlenn(int n);
+int mx_arr_size(char **str);
 int mx_atoi(const char *str);
 int mx_strlen(const char *s);
 int mx_list_size(t_list *list);

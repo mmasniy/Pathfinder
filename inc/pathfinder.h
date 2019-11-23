@@ -13,7 +13,7 @@ typedef struct		s_form {
 	char 			**roads_name; // уникальные острова
 	int 			**path; // массив путей
 	int				**dist; // массив кратчайших путей по Флойду
-	int				**next_top;// массив вершин от А к Б
+	char			**next_top;// массив вершин от А к Б
 } 					t_form;
 
 //Errors
@@ -30,7 +30,7 @@ bool mx_check_valid_isl(int number, int islands);
 
 //Use
 void mx_algorithm(t_form *p_find);
-void mx_print_path(t_form *p_find);
+//void mx_print_path(t_form *p_find);
 void mx_check_path(t_form *p_find, int top);
 
 bool mx_isalpha(char c);
@@ -47,6 +47,7 @@ int *mx_mass(int size);
 //int **mx_create_int_mass(int N);//!!!
 int **mx_create_zero_mass(int N);
 int **mx_create_mass(t_form *p_find);
+int **mx_negative_mass(t_form *p_find, int count);
 //int **mx_create_inf_mass(int islands);
 
 char *mx_zero(char *str);

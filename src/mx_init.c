@@ -93,11 +93,6 @@ bool init(int argc, char **argv) {
 	mx_del_strarr(&p_find->line);
 	mx_del_strarr(&p_find->full_line);
 	
-	/*
-	очистка многомерного массива интов
-	проверить правильность
-	если что - лики могуть быть здесь
-	*/
 	// написать ф-ю для чистки интового массива 
 	free(p_find->path);
 	free(p_find->dist);

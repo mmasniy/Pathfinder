@@ -24,15 +24,19 @@ int *mx_mass(int size) {
 	return mass;
 }
 
-// int **mx_create_int_mass(int N) {
-// 	int **mass = (int **)malloc(sizeof(int *) * N);
-// 	for (int i = 0; i < N; i++) {
-// 		mass[i] = (int *)malloc(sizeof(int) * N);
-// 		for (int j = 0; j < N; j++)
-// 			mass[i][j] = j;
-// 	}
-// 	return mass;
-// }
+int **mx_negative_mass(t_form *p_find, int count) {
+	int **path_in_way = (int **)malloc(sizeof(int *) * count);
+
+	for (int i = 0; i < count; i++) {
+		path_in_way[i] = (int *)malloc(sizeof(int) * (p_find->islands + 1));
+
+		for (int j = 0; j < (p_find->islands + 1); j++) {
+			path_in_way[i][j] = -1;
+		}
+	}
+
+	return path_in_way;
+}
 
 int **mx_create_mass(t_form *p_find) {
 	int **mass = mx_create_zero_mass(p_find->islands);
