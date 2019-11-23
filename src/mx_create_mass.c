@@ -10,6 +10,7 @@ int **mx_create_zero_mass(int N) {
 
 	for (int i = 0; i < N; i++)
 		mass[i][i] = 0;
+	
 	return mass;
 }
 

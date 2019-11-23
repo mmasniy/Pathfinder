@@ -16,6 +16,7 @@ static void mx_print_one_way(char *first, char *second, int dist) {
 				mx_printint(dist);
 				mx_printstr("\n========================================\n");
 }
+
 static void mx_print_other_way1(t_form *p_find, int i, int j, int out) {
 	if (out == 1) {
 		mx_printstr("========================================\n");
@@ -37,17 +38,16 @@ static void mx_print_other_way1(t_form *p_find, int i, int j, int out) {
 		mx_printstr("\n========================================\n");
 	}
 }
+
 static void mx_print_other_way(t_form *p_find, int i, int j) {
 	int city = p_find->next_top[i][j];
 	int index = p_find->next_top[i][j];
-	int *way = mx_mass(p_find->islands);
-	int *way1;
 	int index1 = 0;
 
 	mx_print_other_way1(p_find, i, j, 1);
 
 	if(p_find->next_top[i][city] != 0) {
-		way1 = mx_diffroad(i, j, p_find->islands, p_find->dist, p_find->next_top, p_find->roads_name, way, index1);
+		mx_diffroad();
 	}
 	else {
 		mx_printstr(p_find->roads_name[index]);
@@ -65,7 +65,6 @@ static void mx_print_other_way(t_form *p_find, int i, int j) {
 	}
 	else
 		mx_print_other_way1(p_find, i, j, 2);
-	
 }
 
 void mx_print_path(t_form *p_find) {
@@ -73,7 +72,7 @@ void mx_print_path(t_form *p_find) {
 	// int *way1;
 
 	for (int i = 0; i < p_find->islands; i++) {
-		for (int j = 0; j < p_find->islands; j++) {
+		for (int j = i; j < p_find->islands; j++) {
 			if (i != j) {
 				if(p_find->next_top[i][j] == 0) {
 				mx_print_one_way(p_find->roads_name[i], p_find->roads_name[j], 
