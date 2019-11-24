@@ -38,14 +38,16 @@ int mx_count_other_way(t_form *p_find, int x, int y) {
 	y--;
 
 	if (x < y)
-		count += (mx_count_other_way(p_find, x, y) - 1);
+		count = count + (mx_count_other_way(p_find, x, y) - 1);
+
 	return count;
 }
 
 static void print_dist(t_form *p_find, int *ways, int x, int y) {
 	int index = 0;
 
-	for (; ways[index] != -1; index++);
+	while (ways[index] != -1)
+		index++;
 
 	for (int i = 0; i <= index; i++, index--) {
 		mx_printint(p_find->path[ways[index - 1]][ways[index - 2]]);

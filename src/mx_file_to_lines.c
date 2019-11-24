@@ -13,7 +13,7 @@ char **mx_file_to_lines(const char *filename, t_form *p_find) {
 		exit(0);
 
 	p_find->islands = mx_atoi((p_find->line)[0]);
-	printf("%d\n", p_find->islands);
+
 	if (!(mx_check_all_line(p_find)))
 		exit(0);
 

@@ -48,10 +48,7 @@ static bool init2(int argc, char **argv, t_form *p_find) {
 
 	if (!(p_find->roads_name = mx_file_to_lines(argv[1], p_find)))
 		return 0;
-
-	for(int i = 0; i < 7; i++)
-		printf("%s\n", p_find->roads_name[i]);
-	printf("%d\n", get_multiarr_element(p_find->roads_name));
+	
 	if (!(mx_check_valid_isl(get_multiarr_element(p_find->roads_name),
 													p_find->islands)))
 		exit(0);
