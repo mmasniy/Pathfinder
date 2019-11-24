@@ -36,7 +36,7 @@ INC = inc/pathfinder.h
 
 CFLAGS = -std=c11 -Wall -Wextra -Wpedantic -Werror #-g -fsanitize=address
 
-all: install clean
+all: uninstall install clean
 
 install: 
 	@cd $(LIB) && make install

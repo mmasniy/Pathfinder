@@ -2,10 +2,12 @@
 
 int **mx_create_zero_mass(int N) {
 	int **mass = (int **)malloc(sizeof(int *) * N);
+
 	for (int i = 0; i < N; i++) {
 		mass[i] = (int *)malloc(sizeof(int) * N);
+
 		for (int j = 0; j < N; j++)
-			mass[i][j] = 999999999;
+			mass[i][j] = 100000000;
 	}
 
 	for (int i = 0; i < N; i++)
@@ -68,5 +70,6 @@ int **mx_create_mass(t_form *p_find) {
 
 int mx_get_num_from_str(char *line) {
 	int position = mx_get_char_index(line, ',') + 1;
+
 	return mx_atoi(&line[position]);
 }

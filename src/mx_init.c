@@ -11,8 +11,11 @@ B-A,7
 */
 
 
+//static cant be mx_
+
+
 void mx_algorithm(t_form *p_find) {
-	int MAX = 999999999;
+	int MAX = 100000000;
 	p_find->dist = mx_create_zero_mass(p_find->islands);
 	p_find->next_top = mx_create_zero_mass(p_find->islands);
 
@@ -27,36 +30,16 @@ void mx_algorithm(t_form *p_find) {
 		for (int i = 0; i < p_find->islands; i++) {
 			for (int j = 0; j < p_find->islands; j++) {
 				//посмотреть как работает с ифом и проверкой на макс, если что - убрать
-				if (p_find->dist[i][k] < MAX && p_find->dist[i][k] + p_find->dist[k][j] < p_find->dist[i][j]) {
-					p_find->dist[i][j] = p_find->dist[i][k] + p_find->dist[k][j];
+				if (p_find->dist[i][k] < MAX && p_find->dist[i][k] + 
+									p_find->dist[k][j] < p_find->dist[i][j]) {
+					p_find->dist[i][j] = p_find->dist[i][k] + 
+														p_find->dist[k][j];
 					p_find->next_top[i][j] = k;
 				}
 			}
 		}
 	}
-
 	mx_print_path(p_find);
-	for (int i = 0; i < p_find->islands; i++) {
-		for (int j = 0; j < p_find->islands; j++) {
-			printf("%d ", p_find->path[i][j]);
-		}
-		printf("\n");
-	}
-	printf("====================================\n");
-	for (int i = 0; i < p_find->islands; i++) {
-		for (int j = 0; j < p_find->islands; j++) {
-			printf("%d ", p_find->dist[i][j]);
-		}
-		printf("\n");
-	}
-	printf("====================================\n");
-	for (int i = 0; i < p_find->islands; i++) {
-		for (int j = 0; j < p_find->islands; j++) {
-			printf("%d ", p_find->next_top[i][j]);
-		}
-		printf("\n");
-	}
-	printf("====================================\n");
 }
 
 static bool init2(int argc, char **argv, t_form *p_find) {
@@ -66,11 +49,14 @@ static bool init2(int argc, char **argv, t_form *p_find) {
 	if (!(p_find->roads_name = mx_file_to_lines(argv[1], p_find)))
 		return 0;
 
-	p_find->path = mx_create_mass(p_find);
-	
+	for(int i = 0; i < 7; i++)
+		printf("%s\n", p_find->roads_name[i]);
+	printf("%d\n", get_multiarr_element(p_find->roads_name));
 	if (!(mx_check_valid_isl(get_multiarr_element(p_find->roads_name),
 													p_find->islands)))
 		exit(0);
+
+	p_find->path = mx_create_mass(p_find);
 
 	mx_algorithm(p_find);
 	return 1;
@@ -86,6 +72,7 @@ bool init(int argc, char **argv) {
 	p_find->path = NULL;
 	p_find->dist = NULL;
 	p_find->next_top = NULL;
+	p_find->all_way = NULL;
 
 	init2(argc, argv, p_find);
 
