@@ -23,23 +23,16 @@ char **mx_strsplit(char const *s, char c) {
 	if (!s || !(newstr = (char**)malloc(sizeof(*newstr)\
 										* (mx_count_words(s, c) + 1))))
 		return (NULL);
-
 	while (++i < mx_count_words(s, c)) {
 		a = 0;
-
 		if (!(newstr[i] = mx_strnew(genlen(&s[j], c) + 1)))
 			newstr[i] = NULL;
-		
 		while (s[j] == c)
 			j++;
-		
 		while (s[j] != c && s[j])
 			newstr[i][a++] = s[j++];
-		
 		newstr[i][a] = '\0';
 	}
-
 	newstr[i] = NULL;
-	
 	return newstr;
 }

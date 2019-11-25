@@ -8,10 +8,8 @@ int mx_count_substr(const char *str, const char *sub) {
     return -1;
   else if (!(mx_strcmp(sub, "")))
     return 0;
-
   len = mx_strlen(sub);
-
-  while (*str) {
+  while (*str)
     if (mx_strchr(str, *sub)) {
       if (mx_strncmp(str, sub, len) == 0) {
         num_of_str++;
@@ -22,6 +20,5 @@ int mx_count_substr(const char *str, const char *sub) {
     }
     else
       str++;
-  }
   return num_of_str;
 }

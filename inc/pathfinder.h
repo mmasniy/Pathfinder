@@ -23,6 +23,7 @@ void mx_printerr_all_line(int number);
 
 bool mx_empty_file(char *filename);
 bool mx_check_file(char *filename);
+bool check_max_min(char **line);
 bool mx_check_number_args(int argc);
 bool mx_check_first_line(char *first);
 bool mx_check_all_line(t_form *p_find);
