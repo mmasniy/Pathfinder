@@ -12,25 +12,27 @@ LIB = ./Libmx
 
 SRC = src/main.c \
 		src/mx_printerr.c \
-		src/mx_isalpha.c \
-		src/mx_errors.c \
-		src/mx_errors_functions.c \
+		src/mx_errors1.c \
+		src/mx_errors2.c \
+		src/mx_errors3.c \
 		src/mx_file_to_lines.c \
 		src/get_multi_len.c \
 		src/mx_create_mass.c \
 		src/mx_init.c \
-		src/print_path.c
+		src/print_path.c \
+		src/print_path2.c
 
 OUT = main.o \
 		mx_printerr.o \
-		mx_isalpha.o \
-		mx_errors.o \
-		mx_errors_functions.o \
+		mx_errors1.o \
+		mx_errors2.o \
+		mx_errors3.o \
 		mx_file_to_lines.o \
 		get_multi_len.o \
 		mx_create_mass.o \
 		mx_init.o \
-		print_path.o
+		print_path.o \
+		print_path2.o
 
 INC = inc/pathfinder.h
 

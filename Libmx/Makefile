@@ -66,7 +66,8 @@ SRCS = src/mx_isspace.c \
 	src/mx_strsub.c \
 	src/mx_read_line.c \
 	src/mx_arr_size.c \
-	src/mx_del_int_arr.c
+	src/mx_del_int_arr.c \
+	src/mx_isalpha.c
 
 OBJC = obj/mx_isspace.c \
 	obj/mx_printint.c \
@@ -134,7 +135,8 @@ OBJC = obj/mx_isspace.c \
 	obj/mx_strsub.c \
 	obj/mx_read_line.c \
 	obj/mx_arr_size.c \
-	obj/mx_del_int_arr.c
+	obj/mx_del_int_arr.c \
+	obj/mx_isalpha.c
 
 OBJ = obj/mx_isspace.o \
 	obj/mx_printint.o \
@@ -202,7 +204,8 @@ OBJ = obj/mx_isspace.o \
 	obj/mx_strsub.o \
 	obj/mx_read_line.o \
 	obj/mx_arr_size.o \
-	obj/mx_del_int_arr.o
+	obj/mx_del_int_arr.o \
+	obj/mx_isalpha.o
 
 INC = inc/libmx.h
 

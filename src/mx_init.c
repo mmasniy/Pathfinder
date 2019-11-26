@@ -1,19 +1,5 @@
 #include "../inc/pathfinder.h"
 
-/*
-Обработать ошибки
-2
-A-B,5
-B-A,7
-
-1
-А-А,6
-*/
-
-
-//static cant be mx_
-
-
 void mx_algorithm(t_form *p_find) {
 	int MAX = 100000000;
 	p_find->dist = mx_create_zero_mass(p_find->islands);
@@ -39,14 +25,11 @@ void mx_algorithm(t_form *p_find) {
 static bool init2(int argc, char **argv, t_form *p_find) {
 	if (!(mx_check_errors(argc, argv[1])))
 		exit(0);
-
 	if (!(p_find->roads_name = mx_file_to_lines(argv[1], p_find)))
 		return 0;
-	
 	if (!(mx_check_valid_isl(get_multiarr_element(p_find->roads_name),
 													p_find->islands)))
 		exit(0);
-
 	p_find->path = mx_create_mass(p_find);
 	mx_algorithm(p_find);
 	return 1;

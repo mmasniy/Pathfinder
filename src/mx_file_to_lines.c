@@ -4,6 +4,8 @@ char **mx_file_to_lines(const char *filename, t_form *p_find) {
 	char *all_lines = mx_file_to_str(filename);
 	char **all_isl = NULL;
 
+	if (!(mx_check_file_n(filename)))
+		return NULL;
 	p_find->full_line = mx_strsplit(all_lines, '\n');
 	p_find->line = mx_strsplit(all_lines, '\n');
 	mx_strdel(&all_lines);
@@ -11,8 +13,6 @@ char **mx_file_to_lines(const char *filename, t_form *p_find) {
 		exit(0);
 	if (!(mx_check_first_line((p_find->line)[0])))
 		exit(0);
-	// if (!(check_max_min(p_find)))
-	// 	exit(0);
 	p_find->islands = mx_atoi((p_find->line)[0]);
 	if (!(mx_check_all_line(p_find)))
 		exit(0);

@@ -34,3 +34,27 @@ bool mx_check_first_line(char *first) {
 	return 1;
 }
 
+bool mx_check_number_args(int argc) {
+	if (argc == 2)
+		return 1;
+
+	mx_printerr(USAGE);
+
+	return 0;
+}
+
+bool mx_check_file(char *filename) {
+	int fd = open(filename, O_RDONLY);
+
+	if (fd > 0)
+		return 1;
+
+	mx_printerr("error: file ");
+	mx_printerr(filename);
+	mx_printerr(" does not exist");
+	mx_printerr("\n");
+
+	close(fd);
+
+	return 0;
+}
