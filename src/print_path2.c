@@ -28,7 +28,7 @@ int mx_count_other_way(t_form *p_find, int x, int y) {
 			x++;
 	}
 	y--;
-	if (x <= y)
+	if (x < y)
 		count += (mx_count_other_way(p_find, x, y) - 1);
 	return count;
 }

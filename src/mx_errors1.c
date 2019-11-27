@@ -63,7 +63,6 @@ bool mx_check_file_n(const char *file) {
 			exit(0);
 		}
 	}
-	printf("%c\n", all_lines[mx_strlen(all_lines)]);
 	if (all_lines[mx_strlen(all_lines) - 1] != '\n'){
 		mx_printerr_all_line(count + 1);
 		exit(0);

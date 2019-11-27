@@ -21,10 +21,6 @@ char *mx_del_extra_spaces(const char *str) {
 	char *trimstr = !str ? NULL : mx_strtrim(str);
 	char *newstr = mx_strnew(size_str_no_ws(trimstr));
 
-	// if (!str)
-	// 	return NULL;
-	//trimstr = mx_strtrim(str);
-	//newstr = mx_strnew(size_str_no_ws(trimstr));
 	if (!newstr || !trimstr)
 		return NULL;
 	while (trimstr[i])

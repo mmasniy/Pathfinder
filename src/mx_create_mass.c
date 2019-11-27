@@ -1,6 +1,5 @@
 #include "../inc/pathfinder.h"
 
-//ошибка
 int **mx_create_zero_mass(int N) {
 	int **mass = (int **)malloc(sizeof(int *) * N);
 

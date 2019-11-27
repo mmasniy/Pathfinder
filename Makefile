@@ -36,7 +36,7 @@ OUT = main.o \
 
 INC = inc/pathfinder.h
 
-CFLAGS = -std=c11 -Wall -Wextra -Wpedantic -Werror -g -fsanitize=address
+CFLAGS = -std=c11 -Wall -Wextra -Wpedantic -Werror
 
 all: uninstall install clean
 

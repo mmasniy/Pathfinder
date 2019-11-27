@@ -23,10 +23,10 @@ static void print_ways(t_form *p_find, int *path_in_way, int i, int j) {
 	mx_printstr("\nRoute: ");
 	mx_print_strarr(p_find->all_way, " -> ");
 	mx_printstr("Distance: ");
-	if (mx_arr_size(p_find->all_way) == 2) // чекнуть эту ф-цию;
+	if (mx_arr_size(p_find->all_way) == 2)
 		mx_printint(p_find->dist[i][j]);
 	else
-		print_dist(p_find, path_in_way, i, j); // проверить !!!
+		print_dist(p_find, path_in_way, i, j);
 	mx_printstr("\n========================================\n");
 }
 
@@ -55,7 +55,7 @@ static int **path_from_to(t_form *p_find, int count, int x, int y) {
 
 void mx_print_path(t_form *p_find) {
 	int count  = 0;
-	int **path_in_way; // вершини, по ктором мы ведем путь
+	int **path_in_way;
 
 	for (int i = 0; i < p_find->islands; i++) {
 		for (int j = i + 1; j < p_find->islands; j++) {
@@ -70,3 +70,47 @@ void mx_print_path(t_form *p_find) {
 		}
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

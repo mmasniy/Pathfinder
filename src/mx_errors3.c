@@ -8,7 +8,7 @@ static bool dop_func(t_form *p_find, int i, int j) {
 		}
 		return 1;
 }
-// разбить на функции 
+
 bool mx_check_all_line(t_form *p_find) {
 	for (int i = 1, j = 0; p_find->line[i]; i++) {
 		j = 0;
@@ -35,6 +35,6 @@ bool mx_check_all_line(t_form *p_find) {
 void mx_printerr_all_line(int number) {
 	mx_printerr("error: line ");
 	mx_printerr(mx_itoa(number));
-	mx_printerr(" isn't valid");
+	mx_printerr(" is not valid");
 	mx_printerr("\n");
 }

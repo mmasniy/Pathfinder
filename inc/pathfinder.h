@@ -3,7 +3,7 @@
 #include "../Libmx/inc/libmx.h"
 
 #define USAGE "usage: ./pathfinder [filename]\n"
-#define LINE_1 "error: line 1 isn't valid\n"
+#define LINE_1 "error: line 1 is not valid\n"
 #define INVALID_NUMBER "error: invalid number of islands\n"
 
 typedef struct		s_form {
